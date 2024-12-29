@@ -1,0 +1,31 @@
+The problem was that I was using the `@tailwind` directive improperly, and the `purge` configuration was missing in my `tailwind.config.js` file. I updated the configuration to explicitly purge the necessary HTML files. The following `bugSolution.html` demonstrates the fix:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tailwind Example</title>
+  <link href="output.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold underline">Hello world!</h1>
+    <p class="text-gray-700">This is a paragraph.</p>
+  </div>
+</body>
+</html>
+```
+
+And this is the updated `tailwind.config.js`:
+```javascript
+module.exports = {
+  purge: ['./bugSolution.html'],
+  theme: {
+    extend: {},
+  },
+  variants: {},
+  plugins: [],
+}
+```
